@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addCart } from "../redux/action";
+import { Card, CardContent, Typography } from '@mui/material'; // Import necessary components
+import './Products.css';
+
 
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -72,48 +75,44 @@ const Products = () => {
   const ShowProducts = () => {
     return (
       <>
-        <div className="buttons text-center py-5">
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => setFilter(data)}>All</button>
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct("men's clothing")}>Sci-Fi</button>
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct("women's clothing")}>Fiction</button>
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct("jewelery")}>Non-Finction</button>
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct("electronics")}>Romance</button>
+        <div className="buttons text-center"style={{backgroundColor: '#E1BF12', paddingTop: '20px', paddingBottom: '10px'}}>
+          <button className="btn btn-outline-light btn-sm m-2" onClick={() => setFilter(data)}>All</button>
+          <button className="btn btn-outline-light btn-sm m-2" onClick={() => filterProduct("men's clothing")}>Thriller</button>
+          <button className="btn btn-outline-light btn-sm m-2" onClick={() => filterProduct("women's clothing")}>Self Help</button>
+          <button className="btn btn-outline-light btn-sm m-2" onClick={() => filterProduct("jewelery")}>Crime</button>
+          <button className="btn btn-outline-light btn-sm m-2" onClick={() => filterProduct("electronics")}>Romance</button>
         </div>
 
         {filter.map((product) => {
           return (
-            <div id={product.id} key={product.id} className="col-md-4 col-sm-6 col-xs-8 col-12 mb-4">
+            <div id={product.id} key={product.id} className="custom-row product-container">
               <div className="card text-center h-100" key={product.id}>
                 <img
                   className="card-img-top p-3"
-                  src={"./assets/product1.jpg"}
+                  src={"./assets/book1.jpg"}
                   alt="Card"
                   height={300}
                 />
+                <CardContent>
+                <Typography variant="subtitle2" align="left" style={{ maxHeight: '3em', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {"Lethal White"}
+                </Typography>
+                <Typography variant="subtitle1" align="left">
+                  {product.price}
+                </Typography>
                 <div className="card-body">
-                  <h5 className="card-title">
-                    {"Lethal White"}
-                  </h5>
-                  <p className="card-text">
-                    {"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
-                  </p>
+                          <Link to={"/product/"} className="btn btn-dark m-1" style={{ backgroundColor: '#0E345A' }}><i className="fa fa-eye mr-1"></i> 
+                      
+                          </Link>
+                          <button className="btn btn-dark m-1" style={{ backgroundColor: '#0E345A' }}><i className="fa fa-book-open mr-1"></i>
+                          </button>
+                          <button className="btn btn-dark m-1"  style={{ backgroundColor: '#0E345A' }}><i className="fa fa-cart-shopping mr-1"></i>
+                          </button>
                 </div>
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item lead">$ {product.price}</li>
-                  {/* <li className="list-group-item">Dapibus ac facilisis in</li>
-                    <li className="list-group-item">Vestibulum at eros</li> */}
-                </ul>
-                <div className="card-body">
-                  <Link to={"/product/" + product.id} className="btn btn-dark m-1">
-                    Buy Now
-                  </Link>
-                  <button className="btn btn-dark m-1" onClick={() => addProduct(product)}>
-                    Add to Cart
-                  </button>
+                
+              </CardContent>
                 </div>
               </div>
-            </div>
-
           );
         })}
       </>
@@ -121,16 +120,14 @@ const Products = () => {
   };
   return (
     <>
-      <div className="container my-3 py-3">
-        <div className="row">
-          <div className="col-12">
-            <h2 className="display-5 text-center">Latest Products</h2>
-            <hr />
-          </div>
+      <div className="row">
+        <div className="col-12">
+          <h3 className="display-5 text-center text-white"style={{backgroundColor: '#E1BF12', paddingTop: '50px', paddingBottom: '10px', fontWeight: 'bold', marginBottom: '0px'}}>
+          Genres</h3>
         </div>
-        <div className="row justify-content-center">
-          {loading ? <Loading /> : <ShowProducts />}
-        </div>
+      </div>
+      <div className="row justify-content-center">
+        {loading ? <Loading /> : <ShowProducts />}
       </div>
     </>
   );

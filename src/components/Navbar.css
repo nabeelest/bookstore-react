@@ -1,0 +1,15 @@
+.custom-navbar {
+    background-color: #0E345A; /* Replace with your color code */
+  }
+
+  /* Navbar.css */
+.custom-navbar .navbar-nav .nav-link,
+.custom-navbar .navbar-brand {
+  color: white !important; /* This will override any existing color properties */
+}
+
+.custom-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* If you have buttons or other elements, you may need to add additional CSS rules here */

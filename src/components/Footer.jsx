@@ -1,19 +1,27 @@
-import React from "react";
+import React from 'react';
+import './Footer.css'; // Ensure you have a Footer.css file in the same directory
 
-const Footer = () => {
+function Footer() {
   return (
-    <>
-      <footer className="mb-0 text-center">
-        <div className="d-flex align-items-center justify-content-center pb-5">
-          <div className="col-md-6">
-            <p className="mb-3 mb-md-0">Made with ❤️ by {" "}
-              <a className="text-decoration-underline text-dark fs-5" target="_blank" rel="noreferrer">Manahil Mehmood</a>
-            </p>
-          </div>
-        </div>
-      </footer>
-    </>
+    <footer className="footer-container">
+      <div className="social-media-links">
+        {/* Replace # with your actual links */}
+        <a href="#" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
+        <a href="#" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin-in"></i></a>
+        <a href="#" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i></a>
+        <a href="#" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i></a>
+      </div>
+      <nav className="footer-nav">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Books</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <p className="copyright">Readify © 2024</p>
+    </footer>
   );
-};
+}
 
 export default Footer;
